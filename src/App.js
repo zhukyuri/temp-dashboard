@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Icon from "@mui/material/Icon";
@@ -8,12 +7,22 @@ import Sidenav from "./examples/Sidenav";
 import Configurator from "./examples/Configurator";
 import theme from "./assets/theme";
 import themeDark from "./assets/theme-dark";
-import routes from "./routes";
+import routes from "./services/router/routes";
 import { setMiniSidenav, setOpenConfigurator, useMaterialUIController } from "context";
 import brandWhite from "./assets/images/logo-ct.png";
 import brandDark from "./assets/images/logo-ct-dark.png";
+import { Context } from "./index";
+import LocalToken from "./services/LocalToken";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { AuthStatus } from "./services/store/Store";
+import { observer } from "mobx-react-lite";
+import SignIn from "./layouts/authentication/sign-in";
+import SignUp from "./layouts/authentication/sign-up";
 
-export default function App() {
+function App() {
+  const { store } = useContext(Context);
+  const { isLoading, authStatus, checkAuth } = store;
+  const { status } = authStatus;
   const [controller, dispatch] = useMaterialUIController();
   const {
     miniSidenav,
@@ -27,6 +36,12 @@ export default function App() {
   } = controller;
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const { pathname } = useLocation();
+  // const navigate = useNavigate();
+  // const location = useLocation();
+  // const params = useParams();
+
+  console.log("pathname 1 >>", pathname);
+  console.log("authStatus 1 >>", { ...authStatus });
 
   // Open sidenav when mouse enter on mini sidenav
   const handleOnMouseEnter = () => {
@@ -47,7 +62,12 @@ export default function App() {
   // Change the openConfigurator state
   const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
 
-  // Setting the dir attribute for the body element
+  useEffect(() => {
+    if (LocalToken.read()) {
+      checkAuth();
+    }
+  }, []);
+
   useEffect(() => {
     document.body.setAttribute("dir", direction);
   }, [direction]);
@@ -95,10 +115,11 @@ export default function App() {
     </MDBox>
   );
 
-  return (
-    <ThemeProvider theme={darkMode ? themeDark : theme}>
-      <CssBaseline />
-      {layout === "dashboard" && (
+  if (isLoading) return <div>Loading ...</div>;
+
+  const renderPagers = () => (
+    <>
+      {layout === "dashboard" && (AuthStatus.Authorized) && (
         <>
           <Sidenav
             color={sidenavColor}
@@ -112,11 +133,26 @@ export default function App() {
           {configsButton}
         </>
       )}
+
+
       {layout === "vr" && <Configurator />}
       <Routes>
         {getRoutes(routes)}
         <Route path="*" element={<Navigate to="/dashboard" />} />
       </Routes>
+    </>
+  );
+
+
+  return (
+    <ThemeProvider theme={darkMode ? themeDark : theme}>
+      <CssBaseline />
+      {(status === AuthStatus.LoginForm) && <SignIn />}
+      {(status === AuthStatus.RegistrationForm) && <SignUp />}
+      {(status === AuthStatus.Authorized) && renderPagers()}
     </ThemeProvider>
+
   );
 }
+
+export default observer(App);

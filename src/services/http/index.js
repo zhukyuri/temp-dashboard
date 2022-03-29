@@ -1,7 +1,9 @@
 import axios from "axios";
-import { AuthResponse } from "../models/response/AuthResponse";
 import LocalToken from "../LocalToken";
-import { history } from "./history";
+import { store } from "../../index";
+import { AppRoutes } from "../router/routes";
+import { AuthStatus } from "../store/Store";
+
 
 const api = axios.create({
   withCredentials: true,
@@ -9,34 +11,33 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  // @ts-ignore
   config.headers.Authorization = `Bearer ${LocalToken.read()}`;
 
   return config;
 });
 
 api.interceptors.response.use((config) => {
+  console.log("REFRESH", 0);
   return config;
 }, async (error) => {
   const originalRequest = error.config;
+  console.log("REFRESH", 1, error.config._isRetry);
   if (error.response.status === 401 && error.config && !error.config._isRetry) {
+    console.log("REFRESH", 2);
     originalRequest._isRetry = true;
     try {
-      const response = await axios.get<AuthResponse>(
+      const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/refresh`,
         { withCredentials: true });
-      // if (!response) store.setAuthStatus(AuthStatus.LoginForm) // TODO
-      if (!response) {
-        console.log("Not Refreshing token");
-        history.push("/authentication/sign-in");
-        return;
+      console.log("REFRESH", response);
+      if (!response) { // TODO
+        store.setAuthStatus(AuthStatus.LoginForm, AppRoutes.signIn);
       }
       LocalToken.save(response.data.token);
       return api.request(originalRequest);
     } catch (e) {
       console.log("Not Authorized");
-      // store.setAuthStatus(AuthStatus.LoginForm) // TODO
-      history.push("/authentication/sign-in");
+      store.setAuthStatus(AuthStatus.LoginForm, AppRoutes.signIn); // TODO
     }
   }
   throw error;

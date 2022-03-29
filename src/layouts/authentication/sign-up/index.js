@@ -56,6 +56,7 @@ function Cover() {
         </MDBox>
         <MDBox pt={4} pb={3} px={3}>
           <MDBox component="form" role="form">
+
             <MDBox mb={2}>
               <MDInput type="text" label="Name" variant="standard" fullWidth />
             </MDBox>
@@ -65,6 +66,7 @@ function Cover() {
             <MDBox mb={2}>
               <MDInput type="password" label="Password" variant="standard" fullWidth />
             </MDBox>
+
             <MDBox display="flex" alignItems="center" ml={-1}>
               <Checkbox />
               <MDTypography
