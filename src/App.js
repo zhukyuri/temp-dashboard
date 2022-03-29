@@ -141,7 +141,7 @@ function App() {
     <ThemeProvider theme={darkMode ? themeDark : theme}>
       <CssBaseline />
       {(status === AuthStatus.LoginForm) && <SignIn store={store} />}
-      {(status === AuthStatus.RegistrationForm) && <SignUp />}
+      {(status === AuthStatus.RegistrationForm) && <SignUp store={store} />}
       {(status === AuthStatus.Authorized) && renderPagers()}
     </ThemeProvider>
 
