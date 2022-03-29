@@ -46,6 +46,7 @@ function SignIn(props) {
   };
 
   const handleLogin = async (values) => {
+    console.log(values)
     await login(values.email, values.password);
   };
 
@@ -168,6 +169,7 @@ function SignIn(props) {
                         fontWeight="medium"
                         textGradient
                         onClick={handleSetRegistration}
+                        sx={{ cursor: "pointer"}}
                       >
                         Sign up
                       </MDTypography>

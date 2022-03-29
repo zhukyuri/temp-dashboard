@@ -18,6 +18,7 @@ import { AuthStatus } from "./services/store/Store";
 import { observer } from 'mobx-react-lite'
 import SignIn from "./layouts/authentication/sign-in";
 import SignUp from "./layouts/authentication/sign-up";
+import { appTitle } from "./configs/appConfigs";
 
 function App() {
   const { store } = useContext(Context);
@@ -36,14 +37,7 @@ function App() {
   } = controller;
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const { pathname } = useLocation();
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  // const params = useParams();
 
-  console.log("pathname 1 >>", pathname);
-  console.log("authStatus 1 >>", { ...authStatus });
-
-  // Open sidenav when mouse enter on mini sidenav
   const handleOnMouseEnter = () => {
     if (miniSidenav && !onMouseEnter) {
       setMiniSidenav(dispatch, false);
@@ -51,7 +45,6 @@ function App() {
     }
   };
 
-  // Close sidenav when mouse leave mini sidenav
   const handleOnMouseLeave = () => {
     if (onMouseEnter) {
       setMiniSidenav(dispatch, true);
@@ -59,7 +52,6 @@ function App() {
     }
   };
 
-  // Change the openConfigurator state
   const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
 
   useEffect(() => {
@@ -124,7 +116,7 @@ function App() {
           <Sidenav
             color={sidenavColor}
             brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
-            brandName="Material Dashboard 2"
+            brandName={appTitle}
             routes={routes}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
