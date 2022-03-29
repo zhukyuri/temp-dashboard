@@ -121,6 +121,7 @@ function App() {
             routes={routes}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
+            store={store}
           />
           <Configurator />
           {configsButton}
