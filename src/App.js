@@ -15,7 +15,7 @@ import { Context } from "./index";
 import LocalToken from "./services/LocalToken";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AuthStatus } from "./services/store/Store";
-import { observer } from 'mobx-react-lite'
+import { observer } from "mobx-react-lite";
 import SignIn from "./layouts/authentication/sign-in";
 import SignUp from "./layouts/authentication/sign-up";
 import { appTitle } from "./configs/appConfigs";
@@ -58,6 +58,7 @@ function App() {
     if (LocalToken.read()) {
       checkAuth();
     }
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -135,13 +136,10 @@ function App() {
     </>
   );
 
-
-  console.log("pathname 2 >>", pathname);
-
   return (
     <ThemeProvider theme={darkMode ? themeDark : theme}>
       <CssBaseline />
-      {(status === AuthStatus.LoginForm) && <SignIn store={store}/>}
+      {(status === AuthStatus.LoginForm) && <SignIn store={store} />}
       {(status === AuthStatus.RegistrationForm) && <SignUp />}
       {(status === AuthStatus.Authorized) && renderPagers()}
     </ThemeProvider>

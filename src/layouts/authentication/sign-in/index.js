@@ -35,7 +35,6 @@ const initialValues = {
 
 function SignIn(props) {
   const { store } = props;
-  console.log(props);
   const { setAuthStatus, login } = store;
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -46,7 +45,7 @@ function SignIn(props) {
   };
 
   const handleLogin = async (values) => {
-    console.log(values)
+    console.log(">>>>>", values);
     await login(values.email, values.password);
   };
 
@@ -136,7 +135,10 @@ function SignIn(props) {
                     />
                   </MDBox>
                   <MDBox display="flex" alignItems="center" ml={-1}>
-                    <Switch checked={rememberMe} onChange={handleSetRememberMe} />
+                    <Switch
+                      checked={rememberMe}
+                      onChange={handleSetRememberMe}
+                    />
                     <MDTypography
                       variant="button"
                       fontWeight="regular"
@@ -169,7 +171,7 @@ function SignIn(props) {
                         fontWeight="medium"
                         textGradient
                         onClick={handleSetRegistration}
-                        sx={{ cursor: "pointer"}}
+                        sx={{ cursor: "pointer" }}
                       >
                         Sign up
                       </MDTypography>

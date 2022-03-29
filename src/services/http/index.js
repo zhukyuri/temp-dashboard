@@ -4,7 +4,6 @@ import { store } from "../../index";
 import { AppRoutes } from "../router/routes";
 import { AuthStatus } from "../store/Store";
 
-
 const api = axios.create({
   withCredentials: true,
   baseURL: process.env.REACT_APP_API_URL

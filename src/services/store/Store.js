@@ -71,14 +71,11 @@ export default class Store {
 
   checkAuth = async () => {
     this.setLoading(true);
-    console.log("CHECK", 0);
     try {
-      console.log("CHECK", 1);
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/refresh`,
         { withCredentials: true }
       );
-      console.log("CHECK", 2);
       //  TODO implementation logic <if error refresh>
       LocalToken.save(response.data.token);
       this.setAuthStatus(AuthStatus.Authorized);
