@@ -33,9 +33,10 @@ export default class Store {
     this.isLoading = bool;
   };
 
-  login = async (email, password) => {
+  login = async (email, password, remember) => {
+    console.log(">>>>>", email, password, remember);
     try {
-      const response = await AuthService.login(email, password);
+      const response = await AuthService.login(email, password, remember);
       //  TODO implementation logic <if error login>
       LocalToken.save(response.data.token);
       this.setAuthStatus(AuthStatus.Authorized);

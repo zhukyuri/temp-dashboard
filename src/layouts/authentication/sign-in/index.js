@@ -45,7 +45,6 @@ function SignIn(props) {
   };
 
   const handleLogin = async (values) => {
-    console.log(">>>>>", values);
     await login(values.email, values.password);
   };
 
@@ -86,7 +85,6 @@ function SignIn(props) {
           </Grid>
         </MDBox>
         <MDBox pt={4} pb={3} px={3}>
-
 
           <Formik
             initialValues={initialValues}
@@ -181,6 +179,7 @@ function SignIn(props) {
               );
             }}
           </Formik>
+
         </MDBox>
       </Card>
     </BasicLayout>

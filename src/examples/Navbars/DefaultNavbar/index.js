@@ -1,22 +1,15 @@
-import { useState, useEffect } from "react";
-
-// react-router components
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-// prop-types is a library for typechecking of props.
 import PropTypes from "prop-types";
-
 import Container from "@mui/material/Container";
 import Icon from "@mui/material/Icon";
-
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import MDButton from "components/MDButton";
-
 import DefaultNavbarLink from "examples/Navbars/DefaultNavbar/DefaultNavbarLink";
 import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMobile";
-
-import breakpoints from "assets/theme/base/breakpoints";import { useMaterialUIController } from "context";
+import breakpoints from "assets/theme/base/breakpoints";
+import { useMaterialUIController } from "context";
+import { appTitle } from "../../../configs/appConfigs";
 
 function DefaultNavbar({ transparent, light, action }) {
   const [controller] = useMaterialUIController();
@@ -29,7 +22,6 @@ function DefaultNavbar({ transparent, light, action }) {
   const closeMobileNavbar = () => setMobileNavbar(false);
 
   useEffect(() => {
-    // A function that sets the display state for the DefaultNavbarMobile.
     function displayMobileNavbar() {
       if (window.innerWidth < breakpoints.values.lg) {
         setMobileView(true);
@@ -40,16 +32,9 @@ function DefaultNavbar({ transparent, light, action }) {
       }
     }
 
-    /** 
-     The event listener that's calling the displayMobileNavbar function when 
-     resizing the window.
-    */
     window.addEventListener("resize", displayMobileNavbar);
-
-    // Call the displayMobileNavbar function to set the state with the initial value.
     displayMobileNavbar();
 
-    // Remove event listener on cleanup
     return () => window.removeEventListener("resize", displayMobileNavbar);
   }, []);
 
@@ -71,13 +56,13 @@ function DefaultNavbar({ transparent, light, action }) {
         left={0}
         zIndex={3}
         sx={({
-          palette: { transparent: transparentColor, white, background },
-          functions: { rgba },
-        }) => ({
+               palette: { transparent: transparentColor, white, background },
+               functions: { rgba }
+             }) => ({
           backgroundColor: transparent
             ? transparentColor.main
             : rgba(darkMode ? background.sidenav : white.main, 0.8),
-          backdropFilter: transparent ? "none" : `saturate(200%) blur(30px)`,
+          backdropFilter: transparent ? "none" : `saturate(200%) blur(30px)`
         })}
       >
         <MDBox
@@ -88,7 +73,7 @@ function DefaultNavbar({ transparent, light, action }) {
           pl={{ xs: 0, lg: 1 }}
         >
           <MDTypography variant="button" fontWeight="bold" color={light ? "white" : "dark"}>
-            Material Dashboard 2
+            {appTitle}
           </MDTypography>
         </MDBox>
         <MDBox color="inherit" display={{ xs: "none", lg: "flex" }} m={0} p={0}>
@@ -107,35 +92,6 @@ function DefaultNavbar({ transparent, light, action }) {
             light={light}
           />
         </MDBox>
-        {action &&
-          (action.type === "internal" ? (
-            <MDBox display={{ xs: "none", lg: "inline-block" }}>
-              <MDButton
-                component={Link}
-                to={action.route}
-                variant="gradient"
-                color={action.color ? action.color : "info"}
-                size="small"
-              >
-                {action.label}
-              </MDButton>
-            </MDBox>
-          ) : (
-            <MDBox display={{ xs: "none", lg: "inline-block" }}>
-              <MDButton
-                component="a"
-                href={action.route}
-                target="_blank"
-                rel="noreferrer"
-                variant="gradient"
-                color={action.color ? action.color : "info"}
-                size="small"
-                sx={{ mt: -0.3 }}
-              >
-                {action.label}
-              </MDButton>
-            </MDBox>
-          ))}
         <MDBox
           display={{ xs: "inline-block", lg: "none" }}
           lineHeight={0}
@@ -157,7 +113,7 @@ function DefaultNavbar({ transparent, light, action }) {
 DefaultNavbar.defaultProps = {
   transparent: false,
   light: false,
-  action: false,
+  action: false
 };
 
 // Typechecking props for the DefaultNavbar
@@ -177,11 +133,11 @@ DefaultNavbar.propTypes = {
         "warning",
         "error",
         "dark",
-        "light",
+        "light"
       ]),
-      label: PropTypes.string.isRequired,
-    }),
-  ]),
+      label: PropTypes.string.isRequired
+    })
+  ])
 };
 
 export default DefaultNavbar;
