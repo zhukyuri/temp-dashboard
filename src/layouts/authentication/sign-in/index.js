@@ -102,12 +102,8 @@ function SignIn(props) {
                 errors
               }) => {
               return (
-
-
                 <MDBox component="form" role="form">
                   <MDBox mb={2}>
-
-
                     <MDInput
                       variant="outlined"
                       size="small"
@@ -123,8 +119,6 @@ function SignIn(props) {
                     />
                   </MDBox>
                   <MDBox mb={2}>
-
-
                     <MDInput
                       variant="outlined"
                       size="small"
@@ -139,11 +133,7 @@ function SignIn(props) {
                       error={touched.password && Boolean(errors.password)}
                       helperText={touched.password && (errors.password || " ")}
                     />
-
-
                   </MDBox>
-
-
                   <MDBox display="flex" alignItems="center" ml={-1}>
                     <Switch checked={rememberMe} onChange={handleSetRememberMe} />
                     <MDTypography
@@ -157,8 +147,6 @@ function SignIn(props) {
                     </MDTypography>
                   </MDBox>
                   <MDBox mt={4} mb={1}>
-
-
                     <MDButton
                       variant="gradient"
                       color="info"
@@ -168,8 +156,6 @@ function SignIn(props) {
                     >
                       sign in
                     </MDButton>
-
-
                   </MDBox>
                   <MDBox mt={3} mb={1} textAlign="center">
                     <MDTypography
@@ -187,15 +173,10 @@ function SignIn(props) {
                       </MDTypography>
                     </MDTypography>
                   </MDBox>
-
-
                 </MDBox>
-
               );
             }}
           </Formik>
-
-
         </MDBox>
       </Card>
     </BasicLayout>
