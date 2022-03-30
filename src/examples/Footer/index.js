@@ -1,12 +1,8 @@
-// prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
-
 import Link from "@mui/material/Link";
 import Icon from "@mui/material/Icon";
-
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-
 import typography from "assets/theme/base/typography";
 
 function Footer({ company, links }) {
@@ -79,7 +75,6 @@ function Footer({ company, links }) {
   );
 }
 
-// Setting default values for the props of Footer
 Footer.defaultProps = {
   company: { href: "https://www.creative-tim.com/", name: "Creative Tim" },
   links: [
@@ -90,7 +85,6 @@ Footer.defaultProps = {
   ],
 };
 
-// Typechecking props for the Footer
 Footer.propTypes = {
   company: PropTypes.objectOf(PropTypes.string),
   links: PropTypes.arrayOf(PropTypes.object),

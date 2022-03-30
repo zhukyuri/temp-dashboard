@@ -1,16 +1,11 @@
-// prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
-
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import Icon from "@mui/material/Icon";
 import Divider from "@mui/material/Divider";
 import Fade from "@mui/material/Fade";
-
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-
-// Custom styles for the MDSnackbar
 import MDSnackbarIconRoot from "components/MDSnackbar/MDSnackbarIconRoot";import { useMaterialUIController } from "context";
 
 function MDSnackbar({ color, icon, title, dateTime, content, close, bgWhite, ...rest }) {
@@ -125,13 +120,11 @@ function MDSnackbar({ color, icon, title, dateTime, content, close, bgWhite, ...
   );
 }
 
-// Setting default values for the props of MDSnackbar
 MDSnackbar.defaultProps = {
   bgWhite: false,
   color: "info",
 };
 
-// Typechecking props for MDSnackbar
 MDSnackbar.propTypes = {
   color: PropTypes.oneOf([
     "primary",

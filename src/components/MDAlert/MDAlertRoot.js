@@ -10,7 +10,6 @@ export default styled(Box)(({ theme, ownerState }) => {
   const { borderRadius } = borders;
   const { pxToRem, linearGradient } = functions;
 
-  // backgroundImage value
   const backgroundImageValue = gradients[color]
     ? linearGradient(gradients[color].main, gradients[color].state)
     : linearGradient(gradients.info.main, gradients.info.state);

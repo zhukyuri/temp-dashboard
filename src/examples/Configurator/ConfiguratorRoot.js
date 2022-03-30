@@ -9,7 +9,6 @@ export default styled(Drawer)(({ theme, ownerState }) => {
   const { lg } = boxShadows;
   const { pxToRem } = functions;
 
-  // drawer styles when openConfigurator={true}
   const drawerOpenStyles = () => ({
     width: configuratorWidth,
     left: "initial",
@@ -20,7 +19,6 @@ export default styled(Drawer)(({ theme, ownerState }) => {
     }),
   });
 
-  // drawer styles when openConfigurator={false}
   const drawerCloseStyles = () => ({
     left: "initial",
     right: pxToRem(-350),

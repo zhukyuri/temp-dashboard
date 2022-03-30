@@ -10,7 +10,6 @@ export default styled(Typography)(({ theme, ownerState }) => {
   const { fontWeightLight, fontWeightRegular, fontWeightMedium, fontWeightBold } = typography;
   const { linearGradient } = functions;
 
-  // fontWeight styles
   const fontWeights = {
     light: fontWeightLight,
     regular: fontWeightRegular,
@@ -18,7 +17,6 @@ export default styled(Typography)(({ theme, ownerState }) => {
     bold: fontWeightBold,
   };
 
-  // styles for the typography with textGradient={true}
   const gradientStyles = () => ({
     backgroundImage:
       color !== "inherit" && color !== "text" && color !== "white" && gradients[color]
@@ -31,7 +29,6 @@ export default styled(Typography)(({ theme, ownerState }) => {
     zIndex: 1,
   });
 
-  // color value
   let colorValue = color === "inherit" || !palette[color] ? "inherit" : palette[color].main;
 
   if (darkMode && (color === "inherit" || !palette[color])) {

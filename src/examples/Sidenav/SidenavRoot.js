@@ -20,7 +20,6 @@ export default styled(Drawer)(({ theme, ownerState }) => {
     backgroundValue = white.main;
   }
 
-  // styles for the sidenav when miniSidenav={false}
   const drawerOpenStyles = () => ({
     background: backgroundValue,
     transform: "translateX(0)",
@@ -42,7 +41,6 @@ export default styled(Drawer)(({ theme, ownerState }) => {
     },
   });
 
-  // styles for the sidenav when miniSidenav={true}
   const drawerCloseStyles = () => ({
     background: backgroundValue,
     transform: `translateX(${pxToRem(-320)})`,

@@ -8,7 +8,6 @@ export default styled(LinearProgress)(({ theme, ownerState }) => {
   const { text, gradients } = palette;
   const { linearGradient } = functions;
 
-  // background value
   let backgroundValue;
 
   if (variant === "gradient") {

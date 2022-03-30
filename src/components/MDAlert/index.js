@@ -1,13 +1,7 @@
 import { useState } from "react";
-
-// prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
-
 import Fade from "@mui/material/Fade";
-
 import MDBox from "components/MDBox";
-
-// Custom styles for the MDAlert
 import MDAlertRoot from "components/MDAlert/MDAlertRoot";
 import MDAlertCloseIcon from "components/MDAlert/MDAlertCloseIcon";
 
@@ -16,7 +10,6 @@ function MDAlert({ color, dismissible, children, ...rest }) {
 
   const handleAlertStatus = () => setAlertStatus("fadeOut");
 
-  // The base template for the alert
   const alertTemplate = (mount = true) => (
     <Fade in={mount} timeout={300}>
       <MDAlertRoot ownerState={{ color }} {...rest}>
@@ -44,13 +37,11 @@ function MDAlert({ color, dismissible, children, ...rest }) {
   return null;
 }
 
-// Setting default values for the props of MDAlert
 MDAlert.defaultProps = {
   color: "info",
   dismissible: false,
 };
 
-// Typechecking props of the MDAlert
 MDAlert.propTypes = {
   color: PropTypes.oneOf([
     "primary",

@@ -11,15 +11,10 @@ export default styled(Button)(({ theme, ownerState }) => {
   const { borderRadius } = borders;
   const { colored } = boxShadows;
 
-  // styles for the button with variant="contained"
   const containedStyles = () => {
-    // background color value
     const backgroundValue = palette[color] ? palette[color].main : white.main;
-
-    // backgroundColor value when button is focused
     const focusedBackgroundValue = palette[color] ? palette[color].focus : white.focus;
 
-    // boxShadow value
     const boxShadowValue = colored[color]
       ? `${boxShadow([0, 3], [3, 0], palette[color].main, 0.15)}, ${boxShadow(
           [0, 3],
@@ -29,7 +24,6 @@ export default styled(Button)(({ theme, ownerState }) => {
         )}, ${boxShadow([0, 1], [5, 0], palette[color].main, 0.15)}`
       : "none";
 
-    // boxShadow value when button is hovered
     const hoveredBoxShadowValue = colored[color]
       ? `${boxShadow([0, 14], [26, -12], palette[color].main, 0.4)}, ${boxShadow(
           [0, 4],
@@ -39,7 +33,6 @@ export default styled(Button)(({ theme, ownerState }) => {
         )}, ${boxShadow([0, 8], [10, -5], palette[color].main, 0.2)}`
       : "none";
 
-    // color value
     let colorValue = white.main;
 
     if (!darkMode && (color === "white" || color === "light" || !palette[color])) {
@@ -48,7 +41,6 @@ export default styled(Button)(({ theme, ownerState }) => {
       colorValue = grey[600];
     }
 
-    // color value when button is focused
     let focusedColorValue = white.main;
 
     if (color === "white") {
@@ -81,20 +73,14 @@ export default styled(Button)(({ theme, ownerState }) => {
     };
   };
 
-  // styles for the button with variant="outlined"
   const outliedStyles = () => {
-    // background color value
     const backgroundValue = color === "white" ? rgba(white.main, 0.1) : transparent.main;
-
-    // color value
     const colorValue = palette[color] ? palette[color].main : white.main;
 
-    // boxShadow value
     const boxShadowValue = palette[color]
       ? boxShadow([0, 0], [0, 3.2], palette[color].main, 0.5)
       : boxShadow([0, 0], [0, 3.2], white.main, 0.5);
 
-    // border color value
     let borderColorValue = palette[color] ? palette[color].main : rgba(white.main, 0.75);
 
     if (color === "white") {
@@ -129,15 +115,12 @@ export default styled(Button)(({ theme, ownerState }) => {
     };
   };
 
-  // styles for the button with variant="gradient"
   const gradientStyles = () => {
-    // background value
     const backgroundValue =
       color === "white" || !gradients[color]
         ? white.main
         : linearGradient(gradients[color].main, gradients[color].state);
 
-    // boxShadow value
     const boxShadowValue = colored[color]
       ? `${boxShadow([0, 3], [3, 0], palette[color].main, 0.15)}, ${boxShadow(
           [0, 3],
@@ -147,7 +130,6 @@ export default styled(Button)(({ theme, ownerState }) => {
         )}, ${boxShadow([0, 1], [5, 0], palette[color].main, 0.15)}`
       : "none";
 
-    // boxShadow value when button is hovered
     const hoveredBoxShadowValue = colored[color]
       ? `${boxShadow([0, 14], [26, -12], palette[color].main, 0.4)}, ${boxShadow(
           [0, 4],
@@ -157,7 +139,6 @@ export default styled(Button)(({ theme, ownerState }) => {
         )}, ${boxShadow([0, 8], [10, -5], palette[color].main, 0.2)}`
       : "none";
 
-    // color value
     let colorValue = white.main;
 
     if (color === "white") {
@@ -186,12 +167,8 @@ export default styled(Button)(({ theme, ownerState }) => {
     };
   };
 
-  // styles for the button with variant="text"
   const textStyles = () => {
-    // color value
     const colorValue = palette[color] ? palette[color].main : white.main;
-
-    // color value when button is focused
     const focusedColorValue = palette[color] ? palette[color].focus : white.focus;
 
     return {
@@ -207,14 +184,11 @@ export default styled(Button)(({ theme, ownerState }) => {
     };
   };
 
-  // styles for the button with circular={true}
   const circularStyles = () => ({
     borderRadius: borderRadius.section,
   });
 
-  // styles for the button with iconOnly={true}
   const iconOnlyStyles = () => {
-    // width, height, minWidth and minHeight values
     let sizeValue = pxToRem(38);
 
     if (size === "small") {
@@ -223,7 +197,6 @@ export default styled(Button)(({ theme, ownerState }) => {
       sizeValue = pxToRem(52);
     }
 
-    // padding value
     let paddingValue = `${pxToRem(11)} ${pxToRem(11)} ${pxToRem(10)}`;
 
     if (size === "small") {

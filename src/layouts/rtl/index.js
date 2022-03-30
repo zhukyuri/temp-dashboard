@@ -1,21 +1,14 @@
 import { useEffect } from "react";
-
 import Grid from "@mui/material/Grid";
-
 import MDBox from "components/MDBox";
-
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
-
-// Data
 import reportsBarChartData from "layouts/rtl/data/reportsBarChartData";
 import reportsLineChartData from "layouts/rtl/data/reportsLineChartData";
-
-// RTL components
 import Projects from "layouts/rtl/components/Projects";
 import OrdersOverview from "layouts/rtl/components/OrdersOverview";
 import { useMaterialUIController, setDirection } from "context";
@@ -24,7 +17,6 @@ function RTL() {
   const [, dispatch] = useMaterialUIController();
   const { sales, tasks } = reportsLineChartData;
 
-  // Changing the direction to rtl
   useEffect(() => {
     setDirection(dispatch, "rtl");
 

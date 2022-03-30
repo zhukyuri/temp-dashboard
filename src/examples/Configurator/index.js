@@ -1,23 +1,16 @@
 import { useState, useEffect } from "react";
-
-// react-github-btn
 import GitHubButton from "react-github-btn";
-
 import Divider from "@mui/material/Divider";
 import Switch from "@mui/material/Switch";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import Icon from "@mui/material/Icon";
-
-// @mui icons
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
-
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
 
-// Custom styles for the Configurator
 import ConfiguratorRoot from "examples/Configurator/ConfiguratorRoot";import {
   useMaterialUIController,
   setOpenConfigurator,
@@ -41,20 +34,15 @@ function Configurator() {
   const [disabled, setDisabled] = useState(false);
   const sidenavColors = ["primary", "dark", "info", "success", "warning", "error"];
 
-  // Use the useEffect hook to change the button state for the sidenav type based on window size.
   useEffect(() => {
-    // A function that sets the disabled state of the buttons for the sidenav type.
     function handleDisabled() {
       return window.innerWidth > 1200 ? setDisabled(false) : setDisabled(true);
     }
 
-    // The event listener that's calling the handleDisabled function when resizing the window.
     window.addEventListener("resize", handleDisabled);
 
-    // Call the handleDisabled function to set the state with the initial value.
     handleDisabled();
 
-    // Remove event listener on cleanup
     return () => window.removeEventListener("resize", handleDisabled);
   }, []);
 
@@ -74,7 +62,6 @@ function Configurator() {
   const handleFixedNavbar = () => setFixedNavbar(dispatch, !fixedNavbar);
   const handleDarkMode = () => setDarkMode(dispatch, !darkMode);
 
-  // sidenav type buttons styles
   const sidenavTypeButtonsStyles = ({
     functions: { pxToRem },
     palette: { white, dark, background },
@@ -92,7 +79,6 @@ function Configurator() {
     },
   });
 
-  // sidenav type active button styles
   const sidenavTypeActiveButtonStyles = ({
     functions: { pxToRem, linearGradient },
     palette: { white, gradients, background },

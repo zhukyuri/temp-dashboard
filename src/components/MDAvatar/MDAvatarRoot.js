@@ -9,13 +9,11 @@ export default styled(Avatar)(({ theme, ownerState }) => {
   const { pxToRem, linearGradient } = functions;
   const { size: fontSize, fontWeightRegular } = typography;
 
-  // backgroundImage value
   const backgroundValue =
     bgColor === "transparent"
       ? transparent.main
       : linearGradient(gradients[bgColor].main, gradients[bgColor].state);
 
-  // size value
   let sizeValue;
 
   switch (size) {

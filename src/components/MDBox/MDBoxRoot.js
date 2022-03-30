@@ -60,7 +60,6 @@ export default styled(Box)(({ theme, ownerState }) => {
   const validBorderRadius = ["xs", "sm", "md", "lg", "xl", "xxl", "section"];
   const validBoxShadows = ["xs", "sm", "md", "lg", "xl", "xxl", "inset"];
 
-  // background value
   let backgroundValue = bgColor;
 
   if (variant === "gradient") {
@@ -73,21 +72,18 @@ export default styled(Box)(({ theme, ownerState }) => {
     backgroundValue = bgColor;
   }
 
-  // color value
   let colorValue = color;
 
   if (validColors.find((el) => el === color)) {
     colorValue = palette[color] ? palette[color].main : greyColors[color];
   }
 
-  // borderRadius value
   let borderRadiusValue = borderRadius;
 
   if (validBorderRadius.find((el) => el === borderRadius)) {
     borderRadiusValue = radius[borderRadius];
   }
 
-  // boxShadow value
   let boxShadowValue = "none";
 
   if (validBoxShadows.find((el) => el === shadow)) {

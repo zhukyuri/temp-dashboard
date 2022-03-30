@@ -1,15 +1,11 @@
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import DataTable from "examples/Tables/DataTable";
-
-// Data
 import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
 

@@ -8,11 +8,8 @@ import { Bar } from "react-chartjs-2";
 
 import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
-
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-
-// HorizontalBarChart configurations
 import configs from "examples/Charts/BarCharts/HorizontalBarChart/configs";
 
 import colors from "assets/theme/base/colors";

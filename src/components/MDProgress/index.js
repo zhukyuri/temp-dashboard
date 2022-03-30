@@ -1,11 +1,6 @@
 import { forwardRef } from "react";
-
-// prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
-
 import MDTypography from "components/MDTypography";
-
-// Custom styles for MDProgress
 import MDProgressRoot from "components/MDProgress/MDProgressRoot";
 
 const MDProgress = forwardRef(({ variant, color, value, label, ...rest }, ref) => (
@@ -25,7 +20,6 @@ const MDProgress = forwardRef(({ variant, color, value, label, ...rest }, ref) =
   </>
 ));
 
-// Setting default values for the props of MDProgress
 MDProgress.defaultProps = {
   variant: "contained",
   color: "info",
@@ -33,7 +27,6 @@ MDProgress.defaultProps = {
   label: false,
 };
 
-// Typechecking props for the MDProgress
 MDProgress.propTypes = {
   variant: PropTypes.oneOf(["contained", "gradient"]),
   color: PropTypes.oneOf([

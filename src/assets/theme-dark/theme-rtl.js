@@ -1,6 +1,4 @@
 import { createTheme } from "@mui/material/styles";
-// import Fade from "@mui/material/Fade";
-
 import colors from "assets/theme-dark/base/colors";
 import breakpoints from "assets/theme-dark/base/breakpoints";
 import typography from "assets/theme-dark/base/typography";
