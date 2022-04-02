@@ -12,8 +12,8 @@ export default class AuthService {
   }
 
   static async registration(
-    email, password, username
+    email, password, name
   ) {
-    return api.post("/registration", { email, password, username });
+    return api.post("/registration", { email, password, name });
   }
 }

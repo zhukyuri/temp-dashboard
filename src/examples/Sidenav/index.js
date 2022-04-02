@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation, NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -10,11 +10,12 @@ import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
 import SidenavCollapse from "examples/Sidenav/SidenavCollapse";
 import SidenavRoot from "examples/Sidenav/SidenavRoot";
-import sidenavLogoLabel from "examples/Sidenav/styles/sidenav";import {
-  useMaterialUIController,
+import sidenavLogoLabel from "examples/Sidenav/styles/sidenav";
+import {
   setMiniSidenav,
   setTransparentSidenav,
   setWhiteSidenav,
+  useMaterialUIController
 } from "context";
 
 function Sidenav({ color, brand, brandName, routes, store, ...rest }) {
@@ -22,7 +23,7 @@ function Sidenav({ color, brand, brandName, routes, store, ...rest }) {
   const { miniSidenav, transparentSidenav, whiteSidenav, darkMode, sidenavColor } = controller;
   const location = useLocation();
   const collapseName = location.pathname.replace("/", "");
-  const {logout} = store;
+  const { logout, removeUser } = store;
 
   let textColor = "white";
 
@@ -40,6 +41,7 @@ function Sidenav({ color, brand, brandName, routes, store, ...rest }) {
       setTransparentSidenav(dispatch, window.innerWidth < 1200 ? false : transparentSidenav);
       setWhiteSidenav(dispatch, window.innerWidth < 1200 ? false : whiteSidenav);
     }
+
     window.addEventListener("resize", handleMiniSidenav);
 
     handleMiniSidenav();
@@ -152,20 +154,30 @@ function Sidenav({ color, brand, brandName, routes, store, ...rest }) {
           Sign Out
         </MDButton>
       </MDBox>
+      <MDBox p={2} mt="auto">
+        <MDButton
+          variant="gradient"
+          color={sidenavColor}
+          fullWidth
+          onClick={removeUser}
+        >
+          Delete Account
+        </MDButton>
+      </MDBox>
     </SidenavRoot>
   );
 }
 
 Sidenav.defaultProps = {
   color: "info",
-  brand: "",
+  brand: ""
 };
 
 Sidenav.propTypes = {
   color: PropTypes.oneOf(["primary", "secondary", "info", "success", "warning", "error", "dark"]),
   brand: PropTypes.string,
   brandName: PropTypes.string.isRequired,
-  routes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  routes: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default Sidenav;

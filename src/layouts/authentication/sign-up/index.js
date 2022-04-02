@@ -11,7 +11,7 @@ import bgImage from "assets/images/bg-sign-up-cover.jpeg";
 import { AuthStatus } from "../../../services/store/Store";
 
 const validationSchema = yup.object({
-  username: yup
+  name: yup
     .string()
     .min(5, "Username should be of minimum 5 characters length")
     .max(10, "Username should be of maximum 10 characters length")
@@ -30,7 +30,7 @@ const validationSchema = yup.object({
 const initialValues = {
   email: process.env.REACT_APP_DEFAULT_EMAIL,
   password: process.env.REACT_APP_DEFAULT_PASSWORD,
-  username: process.env.REACT_APP_DEFAULT_USERNAME
+  name: process.env.REACT_APP_DEFAULT_USERNAME
 };
 
 function SignUp(props) {
@@ -42,7 +42,7 @@ function SignUp(props) {
   };
 
   const handleRegistration = async (values) => {
-    await registration(values.email, values.password, values.username);
+    await registration(values.email, values.password, values.name);
   };
 
 
@@ -89,14 +89,14 @@ function SignUp(props) {
                       variant="outlined"
                       size="small"
                       fullWidth
-                      id="username"
-                      name="username"
-                      label="Username"
-                      value={values.username}
+                      id="name"
+                      name="name"
+                      label="Name"
+                      value={values.name}
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      error={touched.username && Boolean(errors.username)}
-                      helperText={touched.username && (errors.username || " ")}
+                      error={touched.name && Boolean(errors.name)}
+                      helperText={touched.name && (errors.name || " ")}
                     />
                   </MDBox>
                   <MDBox mb={2}>
